@@ -1030,3 +1030,212 @@ ul {
     margin-top: 20px;
     display: inline-block;
 }
+/* Контейнер для чекбокса */
+.custom-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  user-select: none;
+  transition: var(--transition);
+}
+
+/* Скрываем стандартный инпут */
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Создаем кастомный квадрат */
+.checkmark {
+  position: relative;
+  top: 2px;
+  flex-shrink: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #f1f5f9;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ховер эффект */
+.custom-checkbox:hover input ~ .checkmark {
+  border-color: var(--accent-primary);
+  background-color: #fff;
+}
+
+/* Состояние: Нажат (Checked) */
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: scale(1.05);
+}
+
+/* Рисуем галочку (скрыта по умолчанию) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Показываем галочку при нажатии */
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+  animation: checkAnim 0.2s forwards;
+}
+
+/* Текст рядом с чекбоксом */
+.label-text {
+  line-height: 1.4;
+  transition: var(--transition);
+}
+
+.custom-checkbox input:checked ~ .label-text {
+  color: var(--text-main);
+}
+
+/* Анимация появления галочки */
+@keyframes checkAnim {
+  from {
+      opacity: 0;
+      transform: rotate(45deg) scale(0.5);
+  }
+  to {
+      opacity: 1;
+      transform: rotate(45deg) scale(1);
+  }
+}
+
+/* Фокус для доступности (Accessibility) */
+.custom-checkbox input:focus-visible ~ .checkmark {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+/* --- About Section Styling --- */
+.about {
+  background: #fdfdfd;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Сетка секции */
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Контейнер изображения с декоративным эффектом */
+.section-image {
+  position: relative;
+  z-index: 2;
+}
+
+.section-image img {
+  width: 100%;
+  border-radius: 40px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Декоративное свечение за картинкой */
+.section-image::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: 20px;
+  bottom: 20px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  opacity: 0.1;
+  border-radius: 42px;
+  z-index: -1;
+}
+
+.section-image:hover img {
+  transform: scale(1.02);
+}
+
+/* Контентная часть */
+.section-content .badge {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--accent-primary);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.section-content .h2 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  color: var(--text-main);
+  letter-spacing: -1px;
+}
+
+.section-content p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 540px;
+}
+
+/* Обновленная кнопка Outline */
+.btn--outline {
+  display: inline-block;
+  padding: 16px 32px;
+  border: 2px solid var(--accent-primary);
+  color: var(--accent-primary);
+  border-radius: 100px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.btn--outline:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+  transform: translateY(-3px);
+}
+
+/* --- Адаптив --- */
+@media (max-width: 992px) {
+  .section-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+      text-align: center;
+  }
+
+  .section-content p {
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .section-content .h2 {
+      font-size: 2.2rem;
+  }
+
+  .section-image {
+      max-width: 500px;
+      margin: 0 auto;
+  }
+}

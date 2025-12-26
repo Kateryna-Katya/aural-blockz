@@ -25,7 +25,7 @@
     <div class="container">
         <div class="section-grid">
             <div class="section-image">
-                <img src="img/placeholder.png" alt="Platform">
+                <img src="/img/one.jpg" alt="Platform">
             </div>
             <div class="section-content">
                 <span class="badge">Платформа года</span>
@@ -74,7 +74,7 @@
         <div class="course-list">
             <div class="course-item" data-aos="fade-up">
                 <div class="course-visual">
-                    <img src="img/placeholder.png" alt="Dev">
+                    <img src="/img/two.jpg" alt="Dev">
                     <div class="course-number">01</div>
                 </div>
                 <div class="course-detail">
@@ -88,7 +88,7 @@
 
             <div class="course-item item-reverse" data-aos="fade-up">
                 <div class="course-visual">
-                    <img src="img/placeholder.png" alt="AI">
+                    <img src="/img/three.jpg" alt="AI">
                     <div class="course-number">02</div>
                 </div>
                 <div class="course-detail">
@@ -111,7 +111,7 @@
 
         <div class="blog-grid">
             <article class="post-card">
-                <div class="post-img"><img src="img/placeholder.png" alt="1"></div>
+                <div class="post-img"><img src="/img/four.jpg" alt="1"></div>
                 <div class="post-info">
                     <span class="post-date">Декабрь 2025</span>
                     <h3>Рынок IT во Франции: Тренды</h3>
@@ -120,7 +120,7 @@
             </article>
 
             <article class="post-card">
-                <div class="post-img"><img src="img/placeholder.png" alt="2"></div>
+                <div class="post-img"><img src="/img/five.jpg" alt="2"></div>
                 <div class="post-info">
                     <span class="post-date">Ноябрь 2025</span>
                     <h3>AI-инструменты сегодня</h3>
@@ -129,7 +129,7 @@
             </article>
 
             <article class="post-card">
-                <div class="post-img"><img src="img/placeholder.png" alt="3"></div>
+                <div class="post-img"><img src="/img/six.jpg" alt="3"></div>
                 <div class="post-info">
                     <span class="post-date">Октябрь 2025</span>
                     <h3>Будущее Web3</h3>
@@ -180,9 +180,12 @@
                     <input type="number" id="captcha-input" placeholder="?" required>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" id="agree" required>
-                    <label for="agree">Я согласен с политикой обработки персональных данных</label>
-                </div>
+                  <label class="custom-checkbox">
+                      <input type="checkbox" id="agree" required>
+                      <span class="checkmark"></span>
+                      <span class="label-text">Я согласен с политикой обработки персональных данных</span>
+                  </label>
+              </div>
                 <button type="submit" class="btn btn--primary w-full">Начать сейчас</button>
                 <div id="form-message" class="form-status"></div>
             </form>

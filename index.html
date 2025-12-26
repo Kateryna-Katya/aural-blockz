@@ -1,56 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/aural-blockz/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aural Blockz — Инновационная IT-школа</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script type="module" crossorigin src="/aural-blockz/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/aural-blockz/assets/styles-guStct1H.css">
+    <link rel="stylesheet" crossorigin href="/aural-blockz/assets/styles-0W6s6-2Y.css">
   </head>
   <body>
     <header class="header">
   <div class="container">
     <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="{=$icon-path}"></use>
-        </svg>
+      <a href="/" class="logo">
+        <span class="logo__dot"></span>
+        Aural-Blockz
       </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
+
+      <ul class="nav__list">
+        <li><a href="#hero" class="nav__link">Главная</a></li>
+        <li><a href="#courses" class="nav__link">Курсы</a></li>
+        <li><a href="#innovations" class="nav__link">Инновации</a></li>
+        <li><a href="#about" class="nav__link">О платформе</a></li>
+        <li><a href="#blog" class="nav__link">Блог</a></li>
       </ul>
+
+      <div class="header__actions">
+        <a href="#contact" class="btn btn--primary">Связаться</a>
+        <button class="burger" aria-label="Menu">
+          <span></span>
+        </button>
+      </div>
     </nav>
   </div>
 </header>
+<div class="mobile-overlay">
+  <div class="mobile-menu">
+    <button class="mobile-close"><i data-lucide="x"></i></button>
+    <ul class="mobile-nav">
+      <li><a href="#hero">Главная</a></li>
+      <li><a href="#about">О платформе</a></li>
+      <li><a href="#advantages">Преимущества</a></li>
+      <li><a href="#innovations">Инновации</a></li>
+      <li><a href="#blog">Образование</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+  </div>
+</div>
 
-
-    <main>
+    <main id="main-content">
       <!-- Loads the specified .html file -->
-      
+      <section id="hero" class="hero">
+    <div id="hero-vanta-bg"></div>
+
+    <div class="container hero__container">
+        <div class="hero__content" data-aos="fade-right">
+            <div class="hero__badge">
+                <i data-lucide="zap" class="hero__badge-icon"></i>
+                Платформа года в Европе
+            </div>
+            <h1 class="hero__title">
+                Постройте карьеру, которая <span class="text-accent">работает на вас</span>
+            </h1>
+            <p class="hero__text">
+                Инновационная IT-школа Aural-Blockz. Мы объединяем передовую цифровую инфраструктуру и методики,
+                доказавшие эффективность.
+            </p>
+            <div class="hero__actions">
+                <a href="#contact" class="btn btn--primary">Запросить доступ</a>
+                <a href="#about" class="btn btn--outline">Оценить перспективы</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about" class="section about" data-aos="fade-up">
+    <div class="container">
+        <div class="section-grid">
+            <div class="section-image">
+                <img src="img/placeholder.png" alt="Platform">
+            </div>
+            <div class="section-content">
+                <span class="badge">Платформа года</span>
+                <h2 class="h2">Переосмыслите подход к развитию</h2>
+                <p>Aural-Blockz — это передовая цифровая инфраструктура, созданная для тех, кто готов строить карьеру,
+                    которая работает на них. Мы предлагаем решения, которые меняют правила игры в IT-образовании на
+                    территории Франции и всего ЕС.</p>
+                <a href="#contact" class="btn btn--outline">Оценить перспективы проекта</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="advantages" class="section advantages bg-white">
+    <div class="container">
+        <div class="text-center" data-aos="fade-down">
+            <h2 class="h2">Наши преимущества</h2>
+            <p class="subtitle">Практики, применимые уже сегодня</p>
+        </div>
+        <div class="grid-3">
+            <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                <i data-lucide="shield-check" class="card-icon"></i>
+                <h3>Проверенный партнер</h3>
+                <p>Методологии, доказавшие эффективность в реальных задачах индустрии.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                <i data-lucide="cpu" class="card-icon"></i>
+                <h3>AI-инструменты</h3>
+                <p>Используйте искусственный интеллект для ускорения процесса обучения и работы.</p>
+            </div>
+            <div class="card" data-aos="zoom-in" data-aos-delay="300">
+                <i data-lucide="trending-up" class="card-icon"></i>
+                <h3>Пассивный доход</h3>
+                <p>Программа пассивного дохода и стратегии роста на базе инноваций.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="courses" class="section courses" data-aos="fade-up">
+    <div class="container">
+        <div class="text-center">
+            <span class="badge">Доступно в Европе</span>
+            <h2 class="h2">Направления обучения</h2>
+            <p class="subtitle">Постройте карьеру, которая работает на вас</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="course-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="course-tag">Хит</div>
+                <div class="course-img">
+                    <img src="img/placeholder.png" alt="Fullstack">
+                </div>
+                <div class="course-info">
+                    <h3>Fullstack Developer</h3>
+                    <p>Инновационная программа по созданию сложных цифровых экосистем с нуля.</p>
+                    <div class="course-meta">
+                        <span><i data-lucide="clock"></i> 6 месяцев</span>
+                        <span><i data-lucide="bar-chart"></i> Middle</span>
+                    </div>
+                    <a href="#contact" class="btn btn--outline w-full">Узнать детали</a>
+                </div>
+            </div>
+
+            <div class="course-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="course-tag">New</div>
+                <div class="course-img">
+                    <img src="img/placeholder.png" alt="AI Specialist">
+                </div>
+                <div class="course-info">
+                    <h3>AI & Data Science</h3>
+                    <p>AI-инструменты для реальных задач: от анализа данных до нейросетей.</p>
+                    <div class="course-meta">
+                        <span><i data-lucide="clock"></i> 4 месяца</span>
+                        <span><i data-lucide="bar-chart"></i> Junior+</span>
+                    </div>
+                    <a href="#contact" class="btn btn--outline w-full">Узнать детали</a>
+                </div>
+            </div>
+
+            <div class="course-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="course-info">
+                    <h3>UI/UX Architecture</h3>
+                    <p>Переосмыслите подход к интерфейсам. Решения, которые меняют правила игры.</p>
+                    <div class="course-meta">
+                        <span><i data-lucide="clock"></i> 3 месяца</span>
+                        <span><i data-lucide="bar-chart"></i> Beginner</span>
+                    </div>
+                    <a href="#contact" class="btn btn--outline w-full">Узнать детали</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="innovations" class="section innovations" data-aos="fade-right">
+    <div class="container">
+        <div class="glass-box">
+            <div class="section-content">
+                <h2 class="h2">Инновационная технология</h2>
+                <p>Получите доступ к инструментам, которые ранее были доступны только топовым корпорациям. Легко
+                    разобраться без опыта — пошаговый путь, понятный каждому.</p>
+                <ul class="check-list">
+                    <li><i data-lucide="check-circle"></i> Подключение занимает 2 минуты</li>
+                    <li><i data-lucide="check-circle"></i> Поддержка по всем вопросам 24/7</li>
+                    <li><i data-lucide="check-circle"></i> Быстрый и легкий старт</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="blog" class="section blog">
+    <div class="container">
+        <div class="flex-between" data-aos="fade-left">
+            <h2 class="h2">Образовательный блог</h2>
+            <a href="#" class="link-more">Смотреть все <i data-lucide="arrow-right"></i></a>
+        </div>
+        <div class="grid-3">
+            <article class="post-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="img/placeholder.png" alt="Blog">
+                <div class="post-content">
+                    <span class="post-tag">Технологии</span>
+                    <h3>Как AI меняет рынок труда во Франции</h3>
+                    <p>Разбор актуальных трендов и инструментов года.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section contact bg-white" data-aos="fade-up">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2 class="h2">Запросить доступ</h2>
+                <p>Пройдите регистрацию и получите бесплатную консультацию по всем вопросам развития вашего проекта.</p>
+            </div>
+            <form id="main-form" class="form">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" placeholder="+33 X XX XX XX XX" required>
+                </div>
+                <div class="form-captcha">
+                    <span id="captcha-text">7 + 5 = </span>
+                    <input type="number" id="captcha-input" placeholder="?" required>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" id="agree" required>
+                    <label for="agree">Я согласен с политикой обработки персональных данных</label>
+                </div>
+                <button type="submit" class="btn btn--primary w-full">Начать сейчас</button>
+                <div id="form-message" class="form-status"></div>
+            </form>
+        </div>
+    </div>
+</section>
     </main>
 
     <footer class="footer">
   <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
-      </a>
-    </p>
+    <div class="footer__grid">
+      <div class="footer__col footer__col--info">
+        <a href="/" class="logo logo--footer">
+          <span class="logo__dot"></span>
+          Aural-Blockz
+        </a>
+        <p class="footer__text">
+          Технологии нового поколения для вашего успеха. Платформа уже доступна в Европе, предлагая решения, которые
+          меняют правила игры в IT-образовании.
+        </p>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">Навигация</h4>
+        <ul class="footer__links">
+          <li><a href="#hero">Главная</a></li>
+          <li><a href="#courses">Направления</a></li>
+          <li><a href="#innovations">Технологии</a></li>
+          <li><a href="#about">О нас</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">Документы</h4>
+        <ul class="footer__links">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="cookies.html">Cookie Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="return.html">Return Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="personal-data-policy.html">Data Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">Контакты</h4>
+        <ul class="footer__contact">
+          <li>
+            <i data-lucide="map-pin"></i>
+            <span>24 Rue du Faubourg Saint-Honoré, 75008 Paris, France</span>
+          </li>
+          <li>
+            <i data-lucide="phone"></i>
+            <span>+33 1 42 68 53 00</span>
+          </li>
+          <li>
+            <i data-lucide="mail"></i>
+            <span>hello@aural-blockz.blog</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; 2025 Aural Blockz. Все права защищены. Экспертная поддержка на всех этапах.</p>
+    </div>
   </div>
 </footer>
-
-
+    <div id="cookie-popup" class="cookie-popup">
+      <div class="cookie-content">
+        <p>Этот сайт использует cookies для улучшения работы. Подробнее — в нашей <a href="./cookies.html">Cookie
+            политике</a>.</p>
+        <button id="cookie-accept" class="btn btn--primary">Принять</button>
+      </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://unpkg.com/hover-effect@1.1.0/dist/hover-effect.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
   </body>
 </html>

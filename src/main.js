@@ -1,11 +1,23 @@
+/**
+ * AURAL-BLOCKZ.BLOG 
+ * Full Interactive Core 2025
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Инициализация UI
+    // --- 1. ИНИЦИАЛИЗАЦИЯ (Icons & AOS) ---
     if (typeof lucide !== 'undefined') lucide.createIcons();
-    if (typeof AOS !== 'undefined') AOS.init({ duration: 900, once: true });
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ 
+            duration: 800, 
+            once: true,
+            disable: 'mobile' // Опционально отключаем на слабых телефонах для плавности
+        });
+    }
 
-    // 2. 3D Фон Vanta
-    if (document.getElementById('hero-vanta-bg') && typeof VANTA !== 'undefined') {
+    // --- 2. VANTA.JS NET (Фон в Hero) ---
+    const vantaElement = document.getElementById('hero-vanta-bg');
+    if (vantaElement && typeof VANTA !== 'undefined') {
         VANTA.NET({
             el: "#hero-vanta-bg",
             mouseControls: true,
@@ -18,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Lenis (Плавный скролл)
+    // --- 3. LENIS (Плавный скролл) ---
     const lenis = new Lenis();
     function raf(time) {
         lenis.raf(time);
@@ -26,59 +38,102 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(raf);
 
-    // 4. БЛОГ: ПРАВИЛЬНЫЙ FOR-EACH (Staggered Animation)
-    const blogPosts = document.querySelectorAll('.post-card');
-    
-    blogPosts.forEach((post, index) => {
-        // Устанавливаем задержку для каждого последующего элемента
-        setTimeout(() => {
-            post.style.transition = "all 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
-            post.style.opacity = "1";
-            post.style.transform = "translateY(0)";
-        }, index * 200); // Интервал 200мс между карточками
-    });
-
-    // 5. МОБИЛЬНОЕ МЕНЮ
+    // --- 4. МОБИЛЬНОЕ МЕНЮ ---
     const burger = document.querySelector('.burger');
-    const overlay = document.querySelector('.mobile-overlay');
-    const closeBtn = document.querySelector('.mobile-close');
+    const mobileOverlay = document.querySelector('.mobile-overlay');
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
 
     if (burger) {
-        burger.onclick = () => overlay.classList.add('active');
+        burger.addEventListener('click', () => {
+            const isOpen = mobileOverlay.classList.toggle('active');
+            burger.classList.toggle('active');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
     }
-    if (closeBtn) {
-        closeBtn.onclick = () => overlay.classList.remove('active');
-    }
 
-    // 6. ФОРМА И КАПЧА
-    const form = document.getElementById('main-form');
-    let n1 = Math.floor(Math.random() * 9) + 1;
-    let n2 = Math.floor(Math.random() * 5);
-    let result = n1 + n2;
+    // Закрытие при клике на ссылку
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileOverlay.classList.remove('active');
+            burger.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
 
-    const capText = document.getElementById('captcha-text');
-    if (capText) capText.innerText = `${n1} + ${n2} = `;
-
-    if (form) {
-        form.onsubmit = (e) => {
-            e.preventDefault();
-            const ans = document.getElementById('captcha-input').value;
-            if (parseInt(ans) === result) {
-                document.getElementById('form-message').innerText = "Успешно отправлено!";
-                form.reset();
-            } else {
-                alert("Ошибка капчи");
+    // --- 5. БЛОГ: ПОЯВЛЕНИЕ ВСЕХ КАРТОЧЕК (Stagger) ---
+    const blogPosts = document.querySelectorAll('.post-card');
+    
+    // Используем IntersectionObserver для запуска анимации когда блок в зоне видимости
+    const blogObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Если зашли в секцию блога, запускаем forEach для карточек
+                blogPosts.forEach((post, index) => {
+                    setTimeout(() => {
+                        post.style.opacity = "1";
+                        post.style.transform = "translateY(0)";
+                        post.style.transition = "all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+                    }, index * 200); // По очереди с интервалом 200мс
+                });
+                blogObserver.unobserve(entry.target);
             }
+        });
+    }, { threshold: 0.1 });
+
+    const blogSection = document.querySelector('.blog');
+    if (blogSection) blogObserver.observe(blogSection);
+
+    // --- 6. ФОРМА КОНТАКТОВ + МАГИЧЕСКАЯ КАПЧА ---
+    const contactForm = document.getElementById('main-form');
+    const captchaLabel = document.getElementById('captcha-text');
+    
+    let num1 = Math.floor(Math.random() * 9) + 1;
+    let num2 = Math.floor(Math.random() * 5) + 1;
+    let correctAnswer = num1 + num2;
+
+    if (captchaLabel) {
+        captchaLabel.innerText = `${num1} + ${num2} = `;
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const userCaptcha = document.getElementById('captcha-input').value;
+            const statusMsg = document.getElementById('form-message');
+
+            if (parseInt(userCaptcha) !== correctAnswer) {
+                alert("Ошибка в вычислении капчи. Попробуйте еще раз.");
+                return;
+            }
+
+            // Имитация отправки
+            statusMsg.innerText = "Технологии в пути... Ваша заявка отправлена!";
+            statusMsg.style.color = "var(--accent-secondary)";
+            contactForm.reset();
+            
+            // Обновляем капчу
+            num1 = Math.floor(Math.random() * 9);
+            num2 = Math.floor(Math.random() * 5);
+            correctAnswer = num1 + num2;
+            captchaLabel.innerText = `${num1} + ${num2} = `;
+        });
+    }
+
+    // --- 7. COOKIE POPUP ---
+    const cookieBox = document.getElementById('cookie-popup');
+    const cookieBtn = document.getElementById('cookie-accept');
+
+    if (cookieBox && !localStorage.getItem('aural_cookies_2025')) {
+        setTimeout(() => {
+            cookieBox.classList.add('active');
+        }, 3000);
+    }
+
+    if (cookieBtn) {
+        cookieBtn.onclick = () => {
+            localStorage.setItem('aural_cookies_2025', 'accepted');
+            cookieBox.classList.remove('active');
         };
     }
-
-    // 7. COOKIE
-    const cp = document.getElementById('cookie-popup');
-    if (cp && !localStorage.getItem('cookies_v1')) {
-        setTimeout(() => cp.classList.add('active'), 2000);
-    }
-    document.getElementById('cookie-accept').onclick = () => {
-        localStorage.setItem('cookies_v1', 'y');
-        cp.classList.remove('active');
-    };
 });

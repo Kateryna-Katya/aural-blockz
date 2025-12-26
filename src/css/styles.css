@@ -955,3 +955,78 @@ ul {
         grid-template-columns: 1fr;
     }
 }
+/* Скрытие кнопки на мобильных устройствах (меньше 992px) */
+@media (max-width: 992px) {
+    .btn--hide-mobile {
+        display: none !important;
+    }
+
+    .burger {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 2100;
+    }
+
+    .burger span {
+        display: block;
+        width: 28px;
+        height: 2px;
+        background: var(--text-main);
+        transition: var(--transition);
+    }
+
+    /* Анимация бургера в крестик при открытии */
+    .burger.active span:nth-child(1) {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    .burger.active span:nth-child(2) {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+}
+
+/* Стили мобильного меню */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobile-overlay.active {
+    transform: translateX(0);
+}
+
+.mobile-nav {
+    text-align: center;
+    list-style: none;
+}
+
+.mobile-nav li {
+    margin: 25px 0;
+}
+
+.mobile-nav a {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.mobile-nav .btn {
+    margin-top: 20px;
+    display: inline-block;
+}

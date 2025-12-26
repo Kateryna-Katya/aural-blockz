@@ -791,71 +791,167 @@ ul {
         gap: 16px;
     }
 }
-.course-card {
+/* --- Bento Grid Layout --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 300px);
+    gap: 24px;
+}
+
+.bento-item {
     background: var(--white);
-    border-radius: 30px;
-    overflow: hidden;
+    border-radius: 32px;
+    padding: 40px;
     position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.04);
     transition: var(--transition);
 }
 
-.course-card:hover {
-    box-shadow: 0 30px 60px rgba(99, 102, 241, 0.1);
-    transform: translateY(-5px);
+.bento-item:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
 
-.course-tag {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: var(--accent-primary);
-    color: white;
-    padding: 5px 15px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    z-index: 2;
+.main-course {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #fff 0%, #f0f4ff 100%);
 }
 
-.course-img {
-    height: 200px;
-    background: #e2e8f0;
-}
-
-.course-info {
-    padding: 30px;
-}
-
-.course-info h3 {
+.main-course h3 {
+    font-size: 2.2rem;
     margin-bottom: 15px;
-    font-size: 1.5rem;
 }
 
-.course-info p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 25px;
-}
-
-.course-meta {
+.bento-list {
+    margin: 25px 0;
     display: flex;
     gap: 20px;
-    margin-bottom: 25px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.course-meta span {
+.bento-list li {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.85rem;
-    color: var(--text-main);
+    gap: 8px;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
-.course-meta i {
-    width: 16px;
+.course-level {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
     color: var(--accent-primary);
+    background: rgba(99, 102, 241, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 15px;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+@media (max-width: 992px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .main-course {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+/* --- Course List (Alternating) --- */
+.course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin-top: 60px;
+}
+
+.course-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.item-reverse {
+    direction: rtl;
+    /* Переворачиваем колонки */
+}
+
+.item-reverse .course-detail {
+    direction: ltr;
+    /* Текст обратно слева направо */
+}
+
+.course-visual {
+    position: relative;
+    border-radius: 40px;
+    overflow: hidden;
+    height: 400px;
+}
+
+.course-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.course-number {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(99, 102, 241, 0.1);
+    line-height: 1;
+    z-index: -1;
+}
+
+.course-detail h3 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+
+/* --- Blog Grid (Stagger Ready) --- */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.post-card {
+    background: #fdfdfd;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    opacity: 0;
+    /* Будет анимировано через JS */
+    transform: translateY(30px);
+}
+
+@media (max-width: 992px) {
+    .course-item {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
 }

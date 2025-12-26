@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script type="module" crossorigin src="/aural-blockz/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/aural-blockz/assets/styles-CYeHBSyd.css">
+    <link rel="stylesheet" crossorigin href="/aural-blockz/assets/styles-Bc_uG0P5.css">
   </head>
   <body>
     <header class="header">
@@ -36,8 +36,9 @@
       </ul>
 
       <div class="header__actions">
-        <a href="#contact" class="btn btn--primary">Связаться</a>
-        <button class="burger" aria-label="Menu">
+        <a href="#contact" class="btn btn--primary btn--hide-mobile">Связаться</a>
+        <button class="burger" aria-label="Открыть меню">
+          <span></span>
           <span></span>
         </button>
       </div>
@@ -45,17 +46,16 @@
   </div>
 </header>
 <div class="mobile-overlay">
-  <div class="mobile-menu">
-    <button class="mobile-close"><i data-lucide="x"></i></button>
+  <nav class="mobile-menu">
     <ul class="mobile-nav">
       <li><a href="#hero">Главная</a></li>
-      <li><a href="#about">О платформе</a></li>
-      <li><a href="#advantages">Преимущества</a></li>
+      <li><a href="#courses">Курсы</a></li>
       <li><a href="#innovations">Инновации</a></li>
-      <li><a href="#blog">Образование</a></li>
-      <li><a href="#contact">Контакты</a></li>
+      <li><a href="#about">О платформе</a></li>
+      <li><a href="#blog">Блог</a></li>
+      <li><a href="#contact" class="btn btn--primary">Связаться</a></li>
     </ul>
-  </div>
+  </nav>
 </div>
 
     <main id="main-content">
